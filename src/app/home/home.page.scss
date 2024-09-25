@@ -61,12 +61,20 @@ input[type="radio"]:checked + ion-card {
   justify-content: center;
 }
 
+.ion-padding{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Media Queries */
 
 /* Pantallas de PC */
 @media (min-width: 1024px) {
   .card-full {
-    width: 40%; /* Tamaño más grande para PC */
+    width: 90%; /* Tamaño más grande para PC */
   }
 }
 
