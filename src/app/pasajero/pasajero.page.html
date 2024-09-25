@@ -10,4 +10,20 @@
       <ion-title size="large">pasajero</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-searchbar [(ngModel)]="searchTerm" placeholder="Buscar ruta..."></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let ruta of filtrarRutas()">
+      <ion-label>
+        <h2>{{ ruta.puntoInicial }}</h2>
+        <p>Hora de Salida: {{ ruta.horaSalida }}</p>
+        <p>Asientos Disponibles: {{ ruta.asientosDisponibles }}</p>
+      </ion-label>
+
+      <ion-button *ngIf="ruta.asientosDisponibles > 0" (click)="ocuparCupo(ruta)">Ocupar Asiento</ion-button>
+      <ion-button *ngIf="ruta.asientosDisponibles === 0" disabled>Ruta Llena</ion-button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
