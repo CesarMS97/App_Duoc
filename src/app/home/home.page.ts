@@ -9,8 +9,15 @@ import { Router } from '@angular/router'; // Importa el Router para la navegaci�
 export class HomePage {
 
   selectedMode: string = ''; // Variable para almacenar el modo seleccionado
+  user: string = ''; // Variable para almacenar el nombre de usuario
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    // Recuperar el estado de la navegación, donde viene el usuario
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras?.state) {
+      this.user = navigation.extras.state['user']; // Obtener el nombre del usuario
+    }
+  }
 
   // Método para manejar la selección del modo
   selectMode(mode: string) {
@@ -24,7 +31,9 @@ export class HomePage {
     }
   }
 
+  // Método para navegar de regreso al login
   navegarLogin(){
-    this.router.navigate(['/login']);}
+    this.router.navigate(['/login']);
+  }
 
 }

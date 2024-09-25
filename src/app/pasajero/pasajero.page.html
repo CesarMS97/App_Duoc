@@ -10,13 +10,22 @@
       <ion-title size="large">pasajero</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="mapContainer">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.6201841710017!2d-70.61798655906527!3d-33.43314529673825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf7b8af466fd%3A0xc8fd2d768e783103!2sDuoc%20UC%3A%20Antonio%20Varas!5e0!3m2!1ses!2scl!4v1727288292943!5m2!1ses!2scl" 
+    width="600" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
 
   <ion-searchbar [(ngModel)]="searchTerm" placeholder="Buscar ruta..."></ion-searchbar>
 
   <ion-list>
     <ion-item *ngFor="let ruta of filtrarRutas()">
       <ion-label>
-        <h2>{{ ruta.puntoInicial }}</h2>
+        <h2>{{ ruta.puntoFinal }}</h2>
         <p>Hora de Salida: {{ ruta.horaSalida }}</p>
         <p>Asientos Disponibles: {{ ruta.asientosDisponibles }}</p>
       </ion-label>

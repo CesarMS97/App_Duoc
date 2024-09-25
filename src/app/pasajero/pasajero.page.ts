@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 interface Ruta {
-  puntoInicial: string;
+  puntoFinal: string;
   horaSalida: string;
   asientosDisponibles: number;
 }
@@ -14,8 +14,10 @@ export class PasajeroPage implements OnInit {
 
   searchTerm: string = '';
   rutas: Ruta[] = [
-    { puntoInicial: 'A', horaSalida: '12:00 PM', asientosDisponibles: 3 },
-    { puntoInicial: 'B', horaSalida: '3:00 PM', asientosDisponibles: 0 },
+    { puntoFinal: 'San Bernardo', horaSalida: '22:00 PM', asientosDisponibles: 3 },
+    { puntoFinal: 'San Cristóbal', horaSalida: '21:30 PM', asientosDisponibles: 1 },
+    { puntoFinal: 'Puente Alto', horaSalida: '21:00 PM', asientosDisponibles: 2 },
+    { puntoFinal: 'Renca', horaSalida: '20:30 PM', asientosDisponibles: 1 },
     // Aquí pueden agregarse más rutas
   ];
 
@@ -24,7 +26,7 @@ export class PasajeroPage implements OnInit {
   filtrarRutas() {
     if (!this.searchTerm) return this.rutas;
     return this.rutas.filter(ruta =>
-      ruta.puntoInicial.toLowerCase().includes(this.searchTerm.toLowerCase())
+      ruta.puntoFinal.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 

@@ -10,6 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
+  // Formulario reactivo
   usuario = new FormGroup({
     user: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
     pass: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
@@ -17,43 +18,35 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
-/*     private alertController: AlertController,
-    private fb: FormBuilder */
-  ) {
+    private alertController: AlertController // Descomentado para usar las alertas
+  ) {}
 
-/*     this.usuario = this.fb.group({
-      user: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      pass: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-    }) */
-  }
+  // Función de navegación y autenticación
+  async navegarExtras() {
+    const user = this.usuario.get('user')?.value;
+    const pass = this.usuario.get('pass')?.value;
 
-  navegarExtras(){
-    let setData: NavigationExtras = {
-      state: {
-        user: this.usuario.value.user,
-        pass: this.usuario.value.pass
-      }
-    };
-    console.log(setData);
-    this.router.navigate(['/home'], setData);
-  }
-/*   async navegarExtras() {
-    const user = this.usuario.get('user').value;
-    const pass = this.usuario.get('pass').value;
-
+    // Validamos si el usuario y la contraseña son correctos
     if (user === 'Cesar' && pass === '1234') {
-      // Si el usuario y contraseña son correctos, navega al home y pasa el nombre del usuario
-      this.router.navigate(['/home'], { queryParams: { nombre: user } });
+      // Si son correctos, navegamos a la página de inicio
+      let setData: NavigationExtras = {
+        state: {
+          user: user,
+          pass: pass
+        }
+      };
+      console.log(setData);
+      this.router.navigate(['/home'], setData);
     } else {
-      // Si el login es incorrecto, muestra un mensaje de alerta
+      // Si no, mostramos una alerta de error
       const alert = await this.alertController.create({
         header: 'Error',
-        message: 'Usuario y/o contraseña incorrecta',
+        message: 'Usuario y/o contraseña incorrectos',
         buttons: ['OK']
       });
       await alert.present();
     }
-  } */
+  }
 
   ngOnInit() {
   }
