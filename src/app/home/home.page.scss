@@ -1,0 +1,91 @@
+/* Estilos generales */
+#container {
+  text-align: center;
+  position: relative; /* Cambiado de absolute a relative para mejor control en diferentes tamaños */
+  left: 20px;
+  right: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+#container-card {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que las tarjetas se adapten en diferentes líneas */
+  gap: 20px; /* Espacio entre tarjetas */
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* Estilos para las tarjetas */
+.card-full {
+  width: 100%;
+  height: auto;
+  max-width: 350px; /* Ancho máximo para limitar el tamaño en pantallas grandes */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s; /* Animación suave cuando se selecciona */
+}
+
+/* Ocultar los radio buttons */
+input[type="radio"] {
+  display: none;
+}
+
+/* Estilos para cuando se selecciona una tarjeta */
+input[type="radio"]:checked + ion-card {
+  transform: scale(1.05); /* Aumenta ligeramente la tarjeta seleccionada */
+  border: 2px solid #007bff; /* Borde azul para la tarjeta seleccionada */
+}
+
+/* Media Queries */
+
+/* Pantallas de PC */
+@media (min-width: 1024px) {
+  .card-full {
+    width: 40%; /* Tamaño más grande para PC */
+  }
+}
+
+/* Pantallas de tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card-full {
+    width: 45%; /* Ajuste para tablets */
+  }
+}
+
+/* Pantallas de móvil */
+@media (max-width: 767px) {
+  .card-full {
+    width: 90%; /* Tamaño más grande en móviles para aprovechar mejor el espacio */
+  }
+
+  #container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #container strong {
+    font-size: 18px;
+  }
+
+  #container p {
+    font-size: 14px;
+  }
+}

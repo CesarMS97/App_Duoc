@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Blank</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container-card">
+    <!-- ion-radio-group para manejar las opciones de selección -->
+    <ion-radio-group [(ngModel)]="selectedMode">
+      <ion-card class="card-full" (click)="selectMode('transportador')">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <ion-card-header>
+          <ion-card-title>Modo Transportador</ion-card-title>
+          <ion-card-subtitle>Si te vienen a buscar o si tienes auto</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          Seleccione aquí, <strong style="color: green;">SI</strong> cuentas con movilización.
+        </ion-card-content>
+        <ion-item>
+          <!-- Usamos [value] en lugar de [checked] -->
+          <ion-radio slot="start" value="transportador"></ion-radio>
+        </ion-item>
+      </ion-card>
+
+      <ion-card class="card-full" (click)="selectMode('pasajero')">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <ion-card-header>
+          <ion-card-title>Modo Pasajero</ion-card-title>
+          <ion-card-subtitle>Si andas a pie y estás buscando vehículo</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          Seleccione aquí, si <strong style="color: red;">NO</strong> cuentas con movilización.
+        </ion-card-content>
+        <ion-item>
+          <!-- Usamos [value] en lugar de [checked] -->
+          <ion-radio slot="start" value="pasajero"></ion-radio>
+        </ion-item>
+      </ion-card>
+    </ion-radio-group>
+  </div>
+  <ion-button (click)="navegarLogin()">Volver al Login</ion-button>
+</ion-content>
