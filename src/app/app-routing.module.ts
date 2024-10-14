@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { guardGuard } from './guard/guard.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [guardGuard]
   },
   {
     path: '',
@@ -17,12 +19,19 @@ const routes: Routes = [
   },
   {
     path: 'transportador',
-    loadChildren: () => import('./transportador/transportador.module').then( m => m.TransportadorPageModule)
+    loadChildren: () => import('./transportador/transportador.module').then( m => m.TransportadorPageModule),
+    canActivate: [guardGuard]
   },
   {
     path: 'pasajero',
-    loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule)
+    loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule),
+    canActivate: [guardGuard]
   },
+  {
+    path: '**',
+    loadChildren: () => import('./page404/page404.module').then( m => m.Page404PageModule)
+  },
+
 ];
 
 @NgModule({

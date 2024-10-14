@@ -27,7 +27,11 @@ export class LoginPage implements OnInit {
     const pass = this.usuario.get('pass')?.value;
 
     // Validamos si el usuario y la contraseña son correctos
-    if (user === 'Cesar' && pass === '1234') {
+    if (user === 'Cesar' && pass === '1234'
+      || user === 'conductor' && pass === '1234'
+      || user === 'pasajero' && pass === '1234'
+      || user === 'test' && pass === '1234'
+    ) {
       // Si son correctos, navegamos a la página de inicio
       let setData: NavigationExtras = {
         state: {
