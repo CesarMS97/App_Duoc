@@ -1,0 +1,20 @@
+.ion-padding{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+.button-block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado entre los botones */
+  
+    /* Opcional: Puedes añadir margen o padding alrededor del bloque completo */
+    padding: 30px;
+  }
+  ion-button {
+    margin-top: 15px; /* Separación entre el botón y el contenido superior */
+  }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AuthserviceService } from '../service/authservice.service'; // Asegúrate de importar el servicio correcto
 
 @Component({
   selector: 'app-login',
@@ -18,41 +19,42 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
-    private alertController: AlertController // Descomentado para usar las alertas
+    private alertController: AlertController,
+    private authService: AuthserviceService // Servicio de autenticación
   ) {}
 
-  // Función de navegación y autenticación
+  ngOnInit() {}
+
+  // Función para manejar la autenticación y la navegación
   async navegarExtras() {
-    const user = this.usuario.get('user')?.value;
-    const pass = this.usuario.get('pass')?.value;
+    const username = this.usuario.get('user')?.value;
+    const password = this.usuario.get('pass')?.value;
 
-    // Validamos si el usuario y la contraseña son correctos
-    if (user === 'Cesar' && pass === '1234'
-      || user === 'conductor' && pass === '1234'
-      || user === 'pasajero' && pass === '1234'
-      || user === 'test' && pass === '1234'
-    ) {
-      // Si son correctos, navegamos a la página de inicio
-      let setData: NavigationExtras = {
-        state: {
-          user: user,
-          pass: pass
+    // Llamar al servicio de autenticación para verificar el usuario
+    this.authService.login(username as string, password as string).subscribe(async (response) => {
+      if (response.success) {
+        // Si la autenticación es exitosa, redirigir según el rol
+        let setData: NavigationExtras = {
+          state: {
+            user: username,
+            role: response.role
+          }
+        };
+
+        if (response.role === 'conductor') {
+          this.router.navigate(['/homec'], setData);
+        } else if (response.role === 'pasajero') {
+          this.router.navigate(['/home'], setData);
         }
-      };
-      console.log(setData);
-      this.router.navigate(['/home'], setData);
-    } else {
-      // Si no, mostramos una alerta de error
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'Usuario y/o contraseña incorrectos',
-        buttons: ['OK']
-      });
-      await alert.present();
-    }
+      } else {
+        // Si las credenciales no son correctas, mostrar una alerta
+        const alert = await this.alertController.create({
+          header: 'Error',
+          message: 'Usuario y/o contraseña incorrectos',
+          buttons: ['OK']
+        });
+        await alert.present();
+      }
+    });
   }
-
-  ngOnInit() {
-  }
-
 }

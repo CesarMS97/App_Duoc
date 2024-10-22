@@ -1,0 +1,22 @@
+[
+    {
+      "user": "conductor",
+      "pass": "1234",
+      "role": "conductor"
+    },
+    {
+      "user": "cesar",
+      "pass": "1234",
+      "role": "pasajero"
+    },
+    {
+      "user": "test",
+      "pass": "1234",
+      "role": "conductor"
+    },
+    {
+      "user": "test2",
+      "pass": "1234",
+      "role": "pasajero"
+    }
+  ]

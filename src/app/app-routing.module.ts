@@ -28,9 +28,14 @@ const routes: Routes = [
     canActivate: [guardGuard]
   },
   {
+    path: 'homec',
+    loadChildren: () => import('./homec/homec.module').then( m => m.HomecPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./page404/page404.module').then( m => m.Page404PageModule)
-  },
+  }
+
 
 ];
 
