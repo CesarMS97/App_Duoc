@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./page404/page404.module').then( m => m.Page404PageModule)
+  },  {
+    path: 'viajes',
+    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
   }
+
 
 
 ];

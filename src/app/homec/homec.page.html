@@ -14,13 +14,13 @@
 
 
   <div class="ion-padding">
-    <h2>Bienvenido {{ user }}! ,Selecciona un modo.</h2> <!-- Aquí se muestra "Bienvenido, Cesar" -->
+    <h2>Bienvenido {{ user }}! ,Selecciona una opción.</h2> <!-- Aquí se muestra "Bienvenido, Cesar" -->
   </div>
   <!-- Aquí envolvemos los botones en un div con clase personalizada -->
   <div class="button-block">
-    <ion-button expand="block" color="primary">Crear Viaje</ion-button>
-    <ion-button expand="block">Ver Viaje</ion-button>
-    <ion-button expand="block">Editar Viaje</ion-button>
+    <ion-button expand="block" color="primary" (click)="navegarTransportador()">Crear Viaje</ion-button>
+    <ion-button expand="block" color="secondary">Ver Viaje</ion-button>
+    <ion-button expand="block" color="warning">Editar Viaje</ion-button>
     <ion-button expand="block" color="danger">Eliminar Viaje</ion-button>
   </div>
 </ion-content>

@@ -21,4 +21,8 @@ export class HomecPage implements OnInit {
   ngOnInit() {
   }
 
+  navegarTransportador() {
+    this.router.navigate(['/transportador']);
+  }
+
 }

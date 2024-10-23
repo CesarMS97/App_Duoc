@@ -12,42 +12,30 @@
   </ion-header>
 
   <div class="ion-padding">
-    <h2>Bienvenido {{ user }}! ,Selecciona un modo.</h2> <!-- Aquí se muestra "Bienvenido, Cesar" -->
+    <h2>Bienvenido {{ user }}! ,Selecciona un viaje.</h2> <!-- Aquí se muestra "Bienvenido, Cesar" -->
   </div>
 
   <div id="container-card">
-    <!-- ion-radio-group para manejar las opciones de selección -->
-    <ion-radio-group [(ngModel)]="selectedMode">
-      <ion-card class="card-full" (click)="selectMode('transportador')">
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-        <ion-card-header>
-          <ion-card-title>Modo Transportador</ion-card-title>
-          <ion-card-subtitle>Si te vienen a buscar o si tienes auto</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          Seleccione aquí, <strong style="color: green;">SI</strong> cuentas con movilización.
-        </ion-card-content>
-        <ion-item>
-          <!-- Usamos [value] en lugar de [checked] -->
-          <ion-radio slot="start" value="transportador"></ion-radio>
-        </ion-item>
-      </ion-card>
+    
+    <ion-list lines="inset">
+      <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar>
+      <ion-item>
+        <ion-badge slot="end">22</ion-badge>
+        <ion-label>Badge in end slot</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>primer Inset Lines</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>segundo Inset Lines</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>3er Inset Lines</ion-label>
+      </ion-item>
+    </ion-list>   
 
-      <ion-card class="card-full" (click)="selectMode('pasajero')">
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-        <ion-card-header>
-          <ion-card-title>Modo Pasajero</ion-card-title>
-          <ion-card-subtitle>Si andas a pie y estás buscando vehículo</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          Seleccione aquí, si <strong style="color: red;">NO</strong> cuentas con movilización.
-        </ion-card-content>
-        <ion-item>
-          <!-- Usamos [value] en lugar de [checked] -->
-          <ion-radio slot="start" value="pasajero"></ion-radio>
-        </ion-item>
-      </ion-card>
-    </ion-radio-group>
   </div>
+  
+  <ion-button expand="block" >Tomar el viaje</ion-button>
   <ion-button (click)="navegarLogin()">Volver al Login</ion-button>
 </ion-content>
