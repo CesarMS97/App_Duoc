@@ -23,6 +23,10 @@ const routes: Routes = [
     canActivate: [guardGuard]
   },
   {
+    path: 'viajes',
+    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
+  },
+  {
     path: 'pasajero',
     loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule),
     canActivate: [guardGuard]
@@ -34,9 +38,6 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./page404/page404.module').then( m => m.Page404PageModule)
-  },  {
-    path: 'viajes',
-    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
   }
 
 
