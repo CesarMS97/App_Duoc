@@ -12,30 +12,25 @@
   </ion-header>
 
   <div class="ion-padding">
-    <h2>Bienvenido {{ user }}! ,Selecciona un viaje.</h2> <!-- Aquí se muestra "Bienvenido, Cesar" -->
+    <h2>Bienvenido, {{ user }}!</h2> <!-- Aquí se muestra "Bienvenido, Cesar" -->
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterViajes()" placeholder="Buscar viajes..."></ion-searchbar>
   </div>
 
   <div id="container-card">
-    
     <ion-list lines="inset">
-      <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar>
-      <ion-item>
-        <ion-badge slot="end">22</ion-badge>
-        <ion-label>Badge in end slot</ion-label>
+      <ion-item *ngFor="let viaje of filteredViajes">
+        <ion-label>
+          <h2>{{ viaje.nombreViaje }}</h2>
+          <p>Hora de Salida: {{ viaje.horaSalida }}</p>
+          <p>Destino: {{ viaje.destino }}</p>
+          <p>Patente: {{ viaje.patente }}</p>
+          <p>Asientos Disponibles: {{ viaje.asientosDisponibles }}</p>
+        </ion-label>
+        <ion-badge slot="end">{{ viaje.asientosDisponibles }}</ion-badge>
       </ion-item>
-      <ion-item>
-        <ion-label>primer Inset Lines</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>segundo Inset Lines</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>3er Inset Lines</ion-label>
-      </ion-item>
-    </ion-list>   
-
+    </ion-list>
   </div>
   
-  <ion-button expand="block" >Tomar el viaje</ion-button>
-  <ion-button (click)="navegarLogin()">Volver al Login</ion-button>
+  <ion-button expand="block" (click)="tomarViaje()">Tomar el viaje</ion-button>
+  <ion-button expand="block" (click)="navegarLogin()">Volver al Login</ion-button>
 </ion-content>

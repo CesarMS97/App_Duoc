@@ -6,11 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ConsumoapiService {
-  private apiUrl = 'http://127.0.0.1:5000/viaje-asignado'; // Cambia esto por la URL de tu API Python
+  private apiUrl = 'http://127.0.0.1:5000'; // Cambia esto por la URL de tu API Python
 
   constructor(private http: HttpClient) {}
 
+
   getViajeAsignado(): Observable<any> {
-    return this.http.get<any>(this.apiUrl); // Realizar la solicitud a la API
+    return this.http.get<any>(`${this.apiUrl}/viaje-asignado`);
+  }
+
+  guardarViaje(viaje: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/guardar-viaje`, viaje);
   }
 }
